@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acuerdo Transaccional de Pago de Beneficios Sociales</title>
+    <style>
+        /* Estilos para impresión en hoja carta (8.5 x 11 pulgadas) */
+        @page {
+            size: letter;
+            margin: 1in;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        /* Estilos para pantalla */
+        .container {
+            max-width: 8.5in;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border: 1px solid #ccc;
+        }
+        
+        /* Estilos para impresión */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border: none;
+                margin: 0;
+                padding: 0;
+                max-width: none;
+            }
+            
+            .form-section {
+                display: none;
+            }
+            
+            .preview-section {
+                page-break-after: avoid;
+            }
+            
+            .documento-preview {
+                padding: 0;
+                margin: 0;
+            }
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .preview-section {
+            page-break-inside: avoid;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-top: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+        
+        .preview {
+            margin-top: 30px;
+            padding: 0;
+            border: none;
+            background-color: transparent;
+        }
+        
+        .documento-preview {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            text-align: justify;
+            font-size: 12px;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .documento-preview h1 {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            margin-top: 0;
+        }
+        
+        .highlight {
+            background-color: yellow;
+        }
+        
+        .required {
+            color: red;
+        }
+        
+        .print-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .print-button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .print-button button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Ajustes específicos para el texto justificado */
+        .documento-preview p {
+            margin: 0 0 12px 0;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        
+        .documento-preview .no-justify {
+            text-align: left;
+        }
+        
+        .firma-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .firma-linea {
+            border-top: 1px solid black;
+            width: 250px;
+            margin: 40px auto 5px auto;
+        }
+        
+        .firma-texto {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h1>Formulario - Acuerdo Transaccional de Pago de Beneficios Sociales</h1>
+            
+            <form id="acuerdoForm">
+                <div class="form-group">
+                    <label for="sexo">Sexo <span class="required">*</span></label>
+                    <select id="sexo" required>
+                        <option value="">Seleccione...</option>
+                        <option value="señor">Señor</option>
+                        <option value="señora">Señora</option>
+                        <option value="señorita">Señorita</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo <span class="required">*</span></label>
+                    <input type="text" id="nombre" placeholder="Ej: María Elena Pérez López" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cedula">Cédula de Identidad <span class="required">*</span></label>
+                    <input type="text" id="cedula" placeholder="Ej: 1234567 L.P." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="domicilio">Domicilio <span class="required">*</span></label>
+                    <input type="text" id="domicilio" placeholder="Ej: Calle Mayor Nº 123, Zona Centro" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mesRetiro">Mes de Retiro <span class="required">*</span></label>
+                    <select id="mesRetiro" required>
+                        <option value="">Seleccione el mes...</option>
+                        <option value="enero">enero</option>
+                        <option value="febrero">febrero</option>
+                        <option value="marzo">marzo</option>
+                        <option value="abril">abril</option>
+                        <option value="mayo">mayo</option>
+                        <option value="junio">junio</option>
+                        <option value="julio">julio</option>
+                        <option value="agosto">agosto</option>
+                        <option value="septiembre">septiembre</option>
+                        <option value="octubre">octubre</option>
+                        <option value="noviembre">noviembre</option>
+                        <option value="diciembre">diciembre</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="diaRetiro">Día de Retiro <span class="required">*</span></label>
+                    <input type="number" id="diaRetiro" min="1" max="31" placeholder="Ej: 15" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="monto">Monto en Bolivianos (Bs.) <span class="required">*</span></label>
+                    <input type="number" id="monto" min="0" step="0.01" placeholder="Ej: 5000.50" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Monto en Literal (se genera automáticamente)</label>
+                    <input type="text" id="montoLiteral" readonly placeholder="El monto en texto se mostrará aquí">
+                </div>
+            </form>
+            
+            <div class="print-button">
+                <button onclick="window.print()">Imprimir Documento</button>
+            </div>
+        </div>
+        
+        <div class="preview-section">
+            <div class="preview">
+                <div class="documento-preview" id="documentoPreview">
+<h1><U><STRONG>ACUERDO TRANSACCIONAL DE PAGO DE BENEFICIOS SOCIALES Y DEMAS DERECHOS LABORALES</STRONG></U></h1>
+
+&nbsp;
+
+<p>Conste por el presente documento privado sobre Acuerdo Transaccional de Pago de Beneficios Sociales y demás derechos laborales, que se suscribe al tenor de las siguientes cláusulas:</p>
+
+<p><strong><U>PRIMERA (PARTES):</U></strong></p>
+<p><STRONG>1.</STRONG> Por una parte el señor <STRONG>RAMIRO RODRIGO MAYTA CABRERA</STRONG>, con carnet de identidad <STRONG>4890375 L.P.</STRONG>, mayor de edad hábil por Ley, con domicilio laboral en la ciudad de La Paz, Av. Apumalla Nº 20 Zona villa Victoria en su calidad de representante legal Empresa Vi.An. Servicios empresariales IMRRESTOC, que para efectos del presente documento se denominará simplemente <STRONG>EMPLEADOR.</STRONG></p>
+<p><STRONG>2.</STRONG> Por otra, el <span class="highlight" id="previewCampo1">[Campo 1: Sexo]</span> <STRONG><span class="highlight" id="previewCampo2">[Campo 2: Nombre]</span></STRONG>, con cedula de identidad <STRONG><span class="highlight" id="previewCampo3">[Campo 3: Cédula]</span></STRONG>. mayor de edad, hábil por derecho, con domicilio en <span class="highlight" id="previewCampo4">[Campo 4: Domicilio]</span>, que para efectos del presente documento se denominara la ex empleado.</p>
+
+<p><strong><U>SEGUNDA (ANTECEDENTES):</U></strong></p>
+<p><STRONG>1. EL EX EMPLEADO</STRONG>, trabajo en la Empresa Vi. An. Servicios empresariales IMRRESTOC presento su carta de retiro voluntario, en la misma menciona que su último día de trabajo seria en el mes de <span class="highlight" id="previewCampo5">[Campo 5: Mes]</span> a los <span class="highlight" id="previewCampo6">[Campo 6: Día]</span> dias de la presente gestión, la misiva fue aceptada por la Gerencia General de Empresa Vi. An. Servicios empresariales IMRRESTOC.</p>
+<p><STRONG>2.</STRONG> Dicho acuerdo de pago de beneficios sociales se establece en el artículo 9 y 10 del Decreto Supremo 28699 de 01 de mayo de 2006, cuando textualmente expone, <STRONG>"ARTÍCULO 9.- (DESPIDOS).</STRONG> I. En caso de producirse el despido del trabajador el empleador deberá cancelar en el plazo impostergable de quince (15) días calendario el finiquito correspondiente a sueldos devengados, indemnización y todos los derechos que correspondan; pasado el plazo indicado y para efectos de mantenimiento de valor correspondiente, el pago de dicho monto será calculado y actualizado en base a la variación de la Unidad de Fomento a la Vivienda - UFV's, desde la fecha de despido del trabajador asalariado hasta el día anterior a la fecha en que se realice el pago del finiquito.</P>
+<P><STRONG>II.</STRONG> En caso que el empleador incumpla su obligación en el plazo establecido en el presente artículo, pagará una multa en beneficio del trabajador consistente en el 30% del monto total a cancelarse, incluyendo el mantenimiento de valor.</P>
+<P><STRONG>ARTÍCULO 10.- (BENEFICIOS SOCIALES O REINCORPORACIÓN). I.</STRONG> Cuando el trabajador sea despedido por causas no contempladas en el Artículo 16 de la Ley General del Trabajo, podrá optar por el pago de los beneficios sociales o por su reincorporación.</P>
+<P><STRONG>II.</STRONG> Cuando el trabajador opte por los beneficios sociales, el empleador está obligado a cancelar los mismos además de los beneficios y otros derechos que le corresponda, en el tiempo y condiciones señaladas en el Artículo noveno del presente Decreto Supremo."</p>
+<p><STRONG>1.</STRONG> Por lo que a la firma del presente acuerdo y documento de pago de beneficios sociales y demás derechos laborales adquiridos por el transcurso del tiempo tendrá toda la validez legal para ser presentada ante autoridad competente legal o administrativa como descargo de pago de sus derechos laborales.</p>
+<p><STRONG>2.</STRONG> También podrá ser presentada en calidad de prueba documental, ante cualquier autoridad estatal, como ser juzgados públicos civiles, penales, fiscalía, ministerio público, de conformidad al <STRONG>"ARTÍCULO 144°.- (MEDIOS DE PRUEBA).</STRONG></P> 
+<P><STRONG>I.</STRONG> Son medios legales de prueba, los documentos, la confesión, las declaraciones de testigos, la inspección judicial, la reconstrucción de hechos, el peritaje, las presunciones y la prueba por informe.</P>
+<P><STRONG>II.</STRONG> Igualmente se consideran medios legales de prueba los documentos y firmas digitales y los documentos generados mediante correo electrónico, en las condiciones previstas en la Ley.</P> 
+<P><STRONG>III.</STRONG> Las partes pueden valerse de cualquier otro medio de prueba no prohibido expresamente por la Ley, y que consideren conducentes a la demostración de sus pretensiones. Estos medios se promoverán y evacuarán aplicando por analogía las disposiciones relativas a los medios de prueba semejantes contemplados en el presente Código, y en su defecto en la forma que disponga la autoridad judicial.</P> 
+<P><STRONG>ARTÍCULO 145°.- (VALORACIÓN DE LA PRUEBA). </STRONG></P> 
+<P><STRONG>I.</STRONG> La autoridad judicial al momento de pronunciar la resolución tendrá la obligación de considerar todas y cada una de las pruebas producidas, individualizando cuales le ayudaron a formar convicción y cuales fueron desestimadas, fundamentando su criterio.</P>
+<P><STRONG>II.</STRONG> Las pruebas se apreciarán en conjunto tomando en cuenta la individualidad de cada una de las producidas y de acuerdo con las reglas de la sana crítica o prudente criterio, salvo que la Ley disponga expresamente una regla de apreciación distinta. En la valoración de los medios de prueba, la autoridad judicial, apreciará las mismas tomando en cuenta la realidad cultural en la cual se ha generado el medio probatorio", ambos del código procesal civil boliviano.</p>
+
+<p><strong><U>TERCERA (DEL ACUERDO TRANSACCIONAL DE PAGO DE BENEFICIOS SOCIALES Y DEMAS DERECHOS LABORALES Y CALIDAD DEL DOCUMENTO)</U></strong></p>
+<p><STRONG>LA EX EMPLEADORA</STRONG> a fin de dar solución a cualquier controversia legal que se haya iniciado, o se pueda iniciar ante cualquier autoridad legal laboral, o cualquier otra autoridad sea esta estatal o privada, procede al pago de los beneficios sociales y demás derechos laborales adquiridos por el transcurso del tiempo por parte de la ex trabajadora, que se detallan a continuación:</p>
+<p>El monto total a ser cancelado a favor del trabajador es de <STRONG><span class="highlight" id="previewCampo7">[Campo 7: Monto]</span> (<span class="highlight" id="previewCampo8">[Campo 8: Monto en Literal]</span>)</STRONG>, en favor del <STRONG>EX EMPLEADO</STRONG>, monto de dinero que declara haber recibido en moneda de curso legal y en su totalidad y entera satisfacción, bajo el siguiente desglose de conceptos y montos específicos:</p>
+<p>Total del, monto a ser cancelado es de <span class="highlight" id="previewCampo7b">[Campo 7: Monto]</span></p>
+<p>En consecuencia, ambas partes reconocen el pago descrito en favor del <STRONG>EX TRABAJADOR</STRONG>, por tanto no existe motivo para substanciar ningún tipo de procesos de conciliación, judiciales, extrajudiciales, arbitrales y/o administrativos, civiles, penales, sean a título individual o colectivo y mucho menos ejercer ninguna otra reclamación administrativa, arbitral, judicial, Acción de Amparo, extrajudicial o cualquier otra en contra de <STRONG>"LA EX EMPLEADORA" Y DEL "EX TRABAJADOR"</STRONG> de parte de su ex empleador, sea de manera directa, mediante apoderado, indirecta, a título personal o por intermedio de cualquier agrupación, asociación, gremio, sindicato ú otros, a cuyo fin ambas partes aceptan que el presente documento podrá ser presentado por <STRONG>ambas partes en forma indistinta</STRONG>, ante cualquier autoridad y/o Tribunal, como elemento constitutivo y prueba plena de inexistencia de toda obligación y/o conflicto que por este particular pueda pretenderse en su contra al haberse cumplido el pago correspondiente.</p>
+<p><STRONG>3.1</STRONG> Conforme lo establece la Constitución Política del Estado Plurinacional de Bolivia establece que los Beneficios Sociales son irrenunciables, concordante con el artículo 4 de la Ley General de Trabajo, aspecto que se cumple en el presente documento, ya que a la firma y aceptación del presente documento se procedió a la cancelación de los motos insertos. Así también y de conformidad a los artículos 150, 151 ambos del código procesal laboral se considerara el presente documento como prueba plena y será presentado en calidad de excepción perentoria de pago.</p>
+<p><STRONG>3.2</STRONG> El presente documento se suscribe en estricta sujeción a la Ley General de Trabajo, Decreto Reglamentario de la Ley General de Trabajo, Código Procesal laboral y demás normativa en materia laboral en actual vigencia, La relación laboral estuvo sujeta a la contratación establecida en el artículo 6 de la Ley General de Trabajo</p>
+
+<p><strong><U>CUARTA (CONFORMIDAD):</U></strong> Ambas partes manifiestan su plena conformidad a las cláusulas precedentes las mismas que corresponden a la fiel y real voluntad de las partes, no habiendo mediado vicio de consentimiento alguno, firmando al pie en constancia en tres ejemplares.</p>
+
+<p style="text-align: right;" class="no-justify">La Paz, <span class="highlight" id="previewMesFinal">[Campo 5: Mes]</span> de 2025</p>
+
+&nbsp;
+&nbsp;
+
+<div class="firma-section">
+    <div class="firma-linea"></div>
+    <div class="firma-texto" id="previewFirmaNombre">[Campo 2: Nombre]</div>
+    <div id="previewFirmaCedula">[Campo 3: Cédula]</div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para convertir número a texto en español (Bolivianos)
+        function numeroALetras(num) {
+            if (num === 0) return "CERO";
+            
+            const unidades = ["", "UNO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE"];
+            const decenas = ["", "DIEZ", "VEINTE", "TREINTA", "CUARENTA", "CINCUENTA", "SESENTA", "SETENTA", "OCHENTA", "NOVENTA"];
+            const especiales = ["", "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISEIS", "DIECISIETE", "DIECIOCHO", "DIECINUEVE"];
+            
+            const centenas = ["", "CIENTO", "DOSCIENTOS", "TRESCIENTOS", "CUATROCIENTOS", "QUINIENTOS", "SEISCIENTOS", "SETECIENTOS", "OCHOCIENTOS", "NOVECIENTOS"];
+            
+            function convertirTresDigitos(n) {
+                if (n === 0) return "";
+                if (n < 10) return unidades[n];
+                if (n < 20) return especiales[n - 10];
+                if (n === 20) return "VEINTE";
+                if (n < 30) return "VEINTI" + unidades[n % 10];
+                if (n < 100) {
+                    return decenas[Math.floor(n / 10)] + (n % 10 !== 0 ? " Y " + unidades[n % 10] : "");
+                }
+                if (n === 100) return "CIEN";
+                if (n < 1000) {
+                    return centenas[Math.floor(n / 100)] + (n % 100 !== 0 ? " " + convertirTresDigitos(n % 100) : "");
+                }
+                return "";
+            }
+            
+            function convertirMillon(n) {
+                if (n === 0) return "";
+                if (n === 1) return "UN MILLON";
+                return convertirTresDigitos(n) + " MILLONES";
+            }
+            
+            function convertirMiles(n) {
+                if (n === 0) return "";
+                if (n === 1) return "MIL";
+                return convertirTresDigitos(n) + " MIL";
+            }
+            
+            const entero = Math.floor(Math.abs(num));
+            const decimal = Math.round((Math.abs(num) - entero) * 100);
+            
+            if (entero === 0 && decimal === 0) return "CERO";
+            
+            let resultado = "";
+            
+            const millones = Math.floor(entero / 1000000);
+            const miles = Math.floor((entero % 1000000) / 1000);
+            const unidadesNum = entero % 1000;
+            
+            if (millones > 0) {
+                resultado += convertirMillon(millones) + " ";
+            }
+            
+            if (miles > 0) {
+                resultado += convertirMiles(miles) + " ";
+            }
+            
+            if (unidadesNum > 0) {
+                if (unidadesNum === 1 && miles === 0 && millones === 0) {
+                    resultado += "UNO";
+                } else {
+                    resultado += convertirTresDigitos(unidadesNum);
+                }
+            }
+            
+            if (resultado === "") resultado = "CERO";
+            
+            resultado = resultado.trim();
+            
+            if (decimal > 0) {
+                resultado += " CON " + (decimal < 10 ? "0" + decimal : decimal) + "/100 BOLIVIANOS";
+            } else {
+                resultado += " CON 00/100 BOLIVIANOS";
+            }
+            
+            return resultado;
+        }
+        
+        // Función para actualizar la vista previa
+        function actualizarVistaPrevia() {
+            const sexo = document.getElementById('sexo').value;
+            const nombre = document.getElementById('nombre').value;
+            const cedula = document.getElementById('cedula').value;
+            const domicilio = document.getElementById('domicilio').value;
+            const mesRetiro = document.getElementById('mesRetiro').value;
+            const diaRetiro = document.getElementById('diaRetiro').value;
+            const monto = document.getElementById('monto').value;
+            
+            // Actualizar campo 8 (monto en literal)
+            let montoLiteral = "";
+            if (monto) {
+                const montoNum = parseFloat(monto);
+                montoLiteral = numeroALetras(montoNum);
+                document.getElementById('montoLiteral').value = montoLiteral;
+            } else {
+                document.getElementById('montoLiteral').value = "";
+            }
+            
+            // Actualizar vista previa
+            document.getElementById('previewCampo1').textContent = sexo || "[Campo 1: Sexo]";
+            document.getElementById('previewCampo2').textContent = nombre || "[Campo 2: Nombre]";
+            document.getElementById('previewCampo3').textContent = cedula || "[Campo 3: Cédula]";
+            document.getElementById('previewCampo4').textContent = domicilio || "[Campo 4: Domicilio]";
+            document.getElementById('previewCampo5').textContent = mesRetiro || "[Campo 5: Mes]";
+            document.getElementById('previewCampo6').textContent = diaRetiro || "[Campo 6: Día]";
+            document.getElementById('previewCampo7').textContent = monto ? monto + " Bs." : "[Campo 7: Monto]";
+            document.getElementById('previewCampo8').textContent = montoLiteral || "[Campo 8: Monto en Literal]";
+            document.getElementById('previewCampo7b').textContent = monto ? monto + " Bs." : "[Campo 7: Monto]";
+            document.getElementById('previewMesFinal').textContent = mesRetiro || "[Campo 5: Mes]";
+            document.getElementById('previewFirmaNombre').textContent = nombre || "[Campo 2: Nombre]";
+            document.getElementById('previewFirmaCedula').textContent = cedula || "[Campo 3: Cédula]";
+        }
+        
+        // Event listeners para todos los campos
+        document.getElementById('sexo').addEventListener('change', actualizarVistaPrevia);
+        document.getElementById('nombre').addEventListener('input', actualizarVistaPrevia);
+        document.getElementById('cedula').addEventListener('input', actualizarVistaPrevia);
+        document.getElementById('domicilio').addEventListener('input', actualizarVistaPrevia);
+        document.getElementById('mesRetiro').addEventListener('change', actualizarVistaPrevia);
+        document.getElementById('diaRetiro').addEventListener('input', actualizarVistaPrevia);
+        document.getElementById('monto').addEventListener('input', actualizarVistaPrevia);
+    </script>
+</body>
+</html>
+
